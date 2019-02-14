@@ -1,0 +1,29 @@
+{
+	"db": {
+		"connections": {
+			"development": {
+				"username": "postgres",
+				"password": "postgres",
+				"database": "sequelize_passport",
+				"host": "127.0.0.1",
+				"dialect": "postgres",
+				"logging": false
+			},
+			"test": {
+				"username": "postgres",
+				"password": "postgres",
+				"database": "tmpsequelize",
+				"host": "127.0.0.1",
+				"dialect": "postgres",
+				"logging": false
+			},
+			"production": {
+				"username": "",
+				"password": null,
+				"database": "",
+				"host": "127.0.0.1",
+				"dialect": "postgres"
+			}
+		}
+	}
+}
