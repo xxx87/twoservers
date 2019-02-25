@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha *.test.js",
-    "start": "node index.js",
+    "master": "node ./webapp/app.js",
+    "slave": "node ./serverapp/app.js",
+    "start": "npm-run-all --parallel master slave",
     "dev": "nodemon server.js"
   },
   "repository": {
