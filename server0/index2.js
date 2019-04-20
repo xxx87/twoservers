@@ -12,22 +12,18 @@ let eventHandlerDelete = evt => {
 	console.log('Delete: ', JSON.stringify(evt, null, 4));
 };
 
-let content;
-content = fs.readFileSync('tables.txt');
-const tables = content.toString().split("\n").slice(0,-1);
-console.log(tables);
-let myFunc = async () => {
-	// Use your connection string
+// let content;
+// content = fs.readFileSync('tables.txt');
+// const tables = content.toString().split("\n").slice(0,-1);
+// console.log(tables);
+
+(async () => {
 	const client = new Client({connectionString: conString});
-	// Choose your tables to listen
-	// const tables = ['tblexample', 't'];
+	const tables = ['tblexample', 't'];
 	try {
-		// Connect client
 		await client.connect();
 		console.log('CONNECTION DONE to tblexample');
-		// By default schema is public
 		const sub = await pgNotify(client, /*{schema: 'public'}*/).subscribe(tables);
-		// Listen for changes
 		sub.on('INSERT', eventHandlerInsert);
 		sub.on('UPDATE', eventHandlerUpdate);
 		sub.on('DELETE', eventHandlerDelete);
@@ -36,8 +32,7 @@ let myFunc = async () => {
 		await client.end();
 	}
 
-};
-myFunc();
+})();
 
 /*(async () => {
 	// Use your connection string
